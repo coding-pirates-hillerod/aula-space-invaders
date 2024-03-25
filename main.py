@@ -1,3 +1,4 @@
+from random import randint
 import pygame
 
 from spaceship import Spaceship
@@ -23,8 +24,19 @@ spaceship_group.add(spaceship)
 
 alien_group = pygame.sprite.Group()
 
-alien = Alien(100, 100)
-alien_group.add(alien)
+
+def update_alien_group():
+    if len(alien_group) == 0:
+        alien = Alien(randint(50, 550), 100)
+        alien_group.add(alien)
+    elif len(alien_group) > 0 and len(alien_group) < 5:
+        r = randint(1, 100)
+        if r > 99:
+            new_alien = Alien(randint(50, 550), 100)
+            alien_group.add(new_alien)
+
+    alien_group.update()
+
 
 running = True
 while running:
@@ -33,7 +45,8 @@ while running:
     screen.blit(bg_img, (0, 0))
 
     spaceship.update(SCREEN_WIDTH)
-    alien_group.update()
+
+    update_alien_group()
 
     spaceship_group.draw(screen)
     alien_group.draw(screen)
