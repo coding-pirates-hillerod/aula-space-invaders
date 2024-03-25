@@ -1,6 +1,9 @@
 # Aula Space Invaders
 Play the modern version of a real "Space Invaders" game .. and defeat our arch enemy: Aula!
 
+## Development status
+The game is still in a total development phase .. but hey, try and give it a go anyway!
+
 ## How to play
 The below describes how to play this blockbuster of a game.
 
