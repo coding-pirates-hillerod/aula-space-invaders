@@ -11,6 +11,10 @@ To get started you'll need to install the following software:
 
 ### Download source code and install dependencies
 First of all, clone this repo using this git command:
-'''git
+```git
 git clone https://github.com/coding-pirates-hillerod/aula-space-invaders.git
-'''
+```
+Then install the needed dependencies by running:
+```bash
+pip3 install -r requirements.txt
+```
