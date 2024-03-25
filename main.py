@@ -11,6 +11,7 @@ clock = pygame.time.Clock()
 fps = 60
 
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
+pygame.display.set_caption("Space Invanders - The 'Aula' Edition")
 
 running = True
 while running:
