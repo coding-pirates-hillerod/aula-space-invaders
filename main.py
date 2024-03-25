@@ -33,7 +33,7 @@ while running:
     screen.blit(bg_img, (0, 0))
 
     spaceship.update(SCREEN_WIDTH)
-    alien.update()
+    alien_group.update()
 
     spaceship_group.draw(screen)
     alien_group.draw(screen)
