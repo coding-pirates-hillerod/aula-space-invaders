@@ -25,5 +25,5 @@ Play the game by running
 python3 main.py
 ```
 
-## THE END ..
+## And finally ..
 .. enjoy!
