@@ -4,7 +4,7 @@ import pygame
 class Alien(pygame.sprite.Sprite):
     def __init__(self, x, y) -> None:
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("./img/alien2.png")
+        self.image = pygame.image.load("./img/aula.png")
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
 
@@ -15,4 +15,4 @@ class Alien(pygame.sprite.Sprite):
             self.remove()
 
     def remove(self) -> None:
-        pygame.sprite.Sprite.remove(self)
+        self.kill()

@@ -25,19 +25,12 @@ spaceship_group.add(spaceship)
 alien_group = pygame.sprite.Group()
 
 
-def add_aliens():
-    if len(alien_group) == 0:
-        alien = Alien(randint(50, 550), 100)
-        alien_group.add(alien)
-    elif len(alien_group) > 0 and len(alien_group) < 5:
+def update_alien_group():
+    if len(alien_group) < 8:
         r = randint(1, 100)
-        if r > 99:
+        if r > 97:
             new_alien = Alien(randint(50, 550), 100)
             alien_group.add(new_alien)
-
-
-def update_alien_group():
-    add_aliens()
     alien_group.update()
 
 
