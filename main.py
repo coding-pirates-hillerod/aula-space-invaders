@@ -2,8 +2,8 @@ import pygame
 
 from spaceship import Spaceship
 
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 600
+SCREEN_HEIGHT = 800
 
 pygame.init()
 
@@ -25,6 +25,8 @@ while running:
     clock.tick(fps)
 
     screen.blit(bg_img, (0, 0))
+
+    spaceship.update(SCREEN_WIDTH)
 
     spaceship_group.draw(screen)
 
