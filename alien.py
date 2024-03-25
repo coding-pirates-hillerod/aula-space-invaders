@@ -10,3 +10,9 @@ class Alien(pygame.sprite.Sprite):
 
     def update(self) -> None:
         self.rect.y += 2
+
+        if self.rect.y > 700:
+            self.remove()
+
+    def remove(self) -> None:
+        pygame.sprite.Sprite.remove(self)
