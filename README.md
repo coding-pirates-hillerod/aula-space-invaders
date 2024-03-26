@@ -30,3 +30,7 @@ python3 main.py
 
 ## And finally ..
 .. enjoy!
+
+## Contributors
+A big shout out to the following contributors of this repo/project/game:
+* [Jonas Bak Phillipson](https://github.com/jbakchr)
