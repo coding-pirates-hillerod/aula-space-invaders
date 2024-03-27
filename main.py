@@ -22,6 +22,8 @@ spaceship_group = pygame.sprite.Group()
 spaceship = Spaceship(int(SCREEN_WIDTH / 2), SCREEN_HEIGHT - 50)
 spaceship_group.add(spaceship)
 
+bullet_group = pygame.sprite.Group()
+
 alien_group = pygame.sprite.Group()
 
 
@@ -40,11 +42,13 @@ while running:
 
     screen.blit(bg_img, (0, 0))
 
-    spaceship.update(SCREEN_WIDTH)
+    spaceship.update(SCREEN_WIDTH, bullet_group)
+    bullet_group.update(alien_group)
 
     update_alien_group()
 
     spaceship_group.draw(screen)
+    bullet_group.draw(screen)
     alien_group.draw(screen)
 
     for event in pygame.event.get():

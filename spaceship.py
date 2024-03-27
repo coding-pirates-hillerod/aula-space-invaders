@@ -1,5 +1,7 @@
 import pygame
 
+from bullet import Bullet
+
 
 class Spaceship(pygame.sprite.Sprite):
     def __init__(self, x, y) -> None:
@@ -8,7 +10,7 @@ class Spaceship(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
 
-    def update(self, screen_width) -> None:
+    def update(self, screen_width, bullet_group) -> None:
         speed = 4
 
         key = pygame.key.get_pressed()
@@ -16,5 +18,9 @@ class Spaceship(pygame.sprite.Sprite):
             self.rect.x -= speed
         if key[pygame.K_RIGHT] and self.rect.right < screen_width:
             self.rect.x += speed
+
+        if key[pygame.K_SPACE]:
+            bullet = Bullet(self.rect.centerx, self.rect.top)
+            bullet_group.add(bullet)
 
         self.mask = pygame.mask.from_surface(self.image)
