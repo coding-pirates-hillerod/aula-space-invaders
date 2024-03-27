@@ -21,7 +21,7 @@ bg_img = pygame.image.load("./img/bg.png")
 clock = pygame.time.Clock()
 fps = 60
 
-aula_msg = 9000
+aula_msg = 50
 game_msg = f"Du har: {aula_msg} Aula beskeder .."
 
 # screen
@@ -59,7 +59,6 @@ def update_alien_group():
         if r > 97:
             new_alien = Alien(randint(50, 550), 100)
             alien_group.add(new_alien)
-    alien_group.update()
 
 
 def draw_text(text, font, text_col, x, y):
@@ -71,6 +70,13 @@ def update_score():
     global aula_msg
     global game_msg
     aula_msg -= 1
+    game_msg = f"Du har: {aula_msg} Aula beskeder .."
+
+
+def increase_score():
+    global aula_msg
+    global game_msg
+    aula_msg += 50
     game_msg = f"Du har: {aula_msg} Aula beskeder .."
 
 
@@ -86,6 +92,8 @@ while running:
     bullet_group.update(alien_group, explosion_fx, update_score)
 
     update_alien_group()
+
+    alien_group.update(increase_score)
 
     spaceship_group.draw(screen)
     bullet_group.draw(screen)

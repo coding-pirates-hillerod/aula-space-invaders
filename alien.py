@@ -8,11 +8,9 @@ class Alien(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.center = [x, y]
 
-    def update(self) -> None:
+    def update(self, increase_score):
         self.rect.y += 2
 
         if self.rect.y > 700:
-            self.remove()
-
-    def remove(self) -> None:
-        self.kill()
+            increase_score()
+            self.kill()
