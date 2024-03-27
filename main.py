@@ -1,5 +1,6 @@
 import pygame
 from pygame import mixer
+from pygame.locals import *
 
 from random import randint
 
@@ -20,8 +21,19 @@ bg_img = pygame.image.load("./img/bg.png")
 clock = pygame.time.Clock()
 fps = 60
 
+aula_msg = 9000
+game_msg = f"Du har: {str(aula_msg)} Aula beskeder .."
+
+# screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Space Invanders - The 'Aula' Edition")
+
+# fonts
+font20 = pygame.font.SysFont("Courier New", 20, bold=True)
+font30 = pygame.font.SysFont("Courier New", 30)
+
+# colors
+white = (255, 255, 255)
 
 # sounds
 laser_fx = pygame.mixer.Sound("img/laser.wav")
@@ -50,11 +62,18 @@ def update_alien_group():
     alien_group.update()
 
 
+def draw_text(text, font, text_col, x, y):
+    img = font.render(text, True, text_col)
+    screen.blit(img, (x, y))
+
+
 running = True
 while running:
     clock.tick(fps)
 
     screen.blit(bg_img, (0, 0))
+
+    draw_text(game_msg, font20, white, 25, 25)
 
     spaceship.update(SCREEN_WIDTH, bullet_group, laser_fx)
     bullet_group.update(alien_group, explosion_fx)
