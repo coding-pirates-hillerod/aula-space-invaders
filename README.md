@@ -1,8 +1,12 @@
 # Aula Space Invaders
 Play the modern version of a real "Space Invaders" game .. and defeat our arch enemy: Aula!
 
-## Development status
-The game is still in a total development phase .. but hey, try and give it a go anyway!
+## Demo
+
+
+https://github.com/coding-pirates-hillerod/aula-space-invaders/assets/21309287/703245db-0f62-4c80-98b6-3419bb0bd5c1
+
+
 
 ## How to play
 The below describes how to play this blockbuster of a game.
