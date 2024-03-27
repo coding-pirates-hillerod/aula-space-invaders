@@ -1,5 +1,8 @@
-from random import randint
 import pygame
+from pygame import mixer
+
+from random import randint
+
 
 from spaceship import Spaceship
 from alien import Alien
@@ -7,6 +10,9 @@ from alien import Alien
 SCREEN_WIDTH = 600
 SCREEN_HEIGHT = 800
 
+# initializers
+pygame.mixer.pre_init()
+mixer.init()
 pygame.init()
 
 bg_img = pygame.image.load("./img/bg.png")
@@ -17,6 +23,14 @@ fps = 60
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Space Invanders - The 'Aula' Edition")
 
+# sounds
+laser_fx = pygame.mixer.Sound("img/laser.wav")
+laser_fx.set_volume(0.25)
+
+explosion_fx = pygame.mixer.Sound("img/explosion.wav")
+explosion_fx.set_volume(0.25)
+
+# sprite groups
 spaceship_group = pygame.sprite.Group()
 
 spaceship = Spaceship(int(SCREEN_WIDTH / 2), SCREEN_HEIGHT - 50)
@@ -42,8 +56,8 @@ while running:
 
     screen.blit(bg_img, (0, 0))
 
-    spaceship.update(SCREEN_WIDTH, bullet_group)
-    bullet_group.update(alien_group)
+    spaceship.update(SCREEN_WIDTH, bullet_group, laser_fx)
+    bullet_group.update(alien_group, explosion_fx)
 
     update_alien_group()
 
