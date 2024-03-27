@@ -22,7 +22,7 @@ clock = pygame.time.Clock()
 fps = 60
 
 aula_msg = 9000
-game_msg = f"Du har: {str(aula_msg)} Aula beskeder .."
+game_msg = f"Du har: {aula_msg} Aula beskeder .."
 
 # screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -67,6 +67,13 @@ def draw_text(text, font, text_col, x, y):
     screen.blit(img, (x, y))
 
 
+def update_score():
+    global aula_msg
+    global game_msg
+    aula_msg -= 1
+    game_msg = f"Du har: {aula_msg} Aula beskeder .."
+
+
 running = True
 while running:
     clock.tick(fps)
@@ -76,7 +83,7 @@ while running:
     draw_text(game_msg, font20, white, 25, 25)
 
     spaceship.update(SCREEN_WIDTH, bullet_group, laser_fx)
-    bullet_group.update(alien_group, explosion_fx)
+    bullet_group.update(alien_group, explosion_fx, update_score)
 
     update_alien_group()
 
