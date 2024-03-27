@@ -23,6 +23,7 @@ fps = 60
 
 aula_msg = 50
 game_msg = f"Du har: {aula_msg} Aula beskeder .."
+max_msg = 200
 
 # screen
 screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -30,7 +31,7 @@ pygame.display.set_caption("Space Invanders - The 'Aula' Edition")
 
 # fonts
 font20 = pygame.font.SysFont("Courier New", 20, bold=True)
-font30 = pygame.font.SysFont("Courier New", 30)
+font30 = pygame.font.SysFont("Courier New", 28, bold=True)
 
 # colors
 white = (255, 255, 255)
@@ -41,6 +42,9 @@ laser_fx.set_volume(0.25)
 
 explosion_fx = pygame.mixer.Sound("img/explosion.wav")
 explosion_fx.set_volume(0.25)
+
+evil_chuckle_fx = pygame.mixer.Sound("img/evil_chuckles.wav")
+evil_chuckle_fx.set_volume(0.25)
 
 # sprite groups
 spaceship_group = pygame.sprite.Group()
@@ -81,19 +85,30 @@ def increase_score():
 
 
 running = True
+play_sound = True
+
 while running:
     clock.tick(fps)
 
     screen.blit(bg_img, (0, 0))
 
-    draw_text(game_msg, font20, white, 25, 25)
+    if aula_msg < max_msg:
+        draw_text(game_msg, font20, white, 25, 25)
 
-    spaceship.update(SCREEN_WIDTH, bullet_group, laser_fx)
-    bullet_group.update(alien_group, explosion_fx, update_score)
+        spaceship.update(SCREEN_WIDTH, bullet_group, laser_fx)
+        bullet_group.update(alien_group, explosion_fx, update_score)
 
-    update_alien_group()
+        update_alien_group()
 
-    alien_group.update(increase_score)
+        alien_group.update(increase_score)
+
+    if aula_msg >= max_msg:
+        alien_group.remove(alien_group)
+        draw_text("Aula har vundet over dig .. !!", font30, white, 50, 400)
+
+        if play_sound:
+            evil_chuckle_fx.play()
+            play_sound = False
 
     spaceship_group.draw(screen)
     bullet_group.draw(screen)
